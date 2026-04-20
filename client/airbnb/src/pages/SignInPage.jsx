@@ -29,7 +29,7 @@ export default function SignInPage() {
           </div>
 
           <button type="submit" className="auth-submit-btn">
-            Create Account
+            Sign In
           </button>
 
           <a href="#" className="auth-forgot-link">
