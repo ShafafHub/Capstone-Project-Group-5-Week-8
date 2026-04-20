@@ -1,3 +1,4 @@
+/*sign in style*/
 .auth-page {
   min-height: 100vh;
   background-color: #f7f8fc;
@@ -203,3 +204,20 @@
     margin: 14px 0 28px;
   }
 }
+/*sign in style*/
+
+/* sign up style*/
+.auth-terms {
+  margin: 22px 0 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #667085;
+}
+
+.auth-terms a {
+  color: #3366ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+/* sign up style*/
