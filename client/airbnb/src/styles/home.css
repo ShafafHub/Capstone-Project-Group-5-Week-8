@@ -372,8 +372,9 @@ button {
   justify-content: space-between;
   gap: 18px;
   padding: 16px 48px 12px;
-  border-bottom: 1px solid #ebebeb;
+  border-top: 1px solid #ebebeb;
   background: #ffffff;
+  margin-top: 2rem;
 }
 
 .home-categories-scroll {
