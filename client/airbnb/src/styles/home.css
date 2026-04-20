@@ -662,7 +662,7 @@ button {
 .show-map-btn {
   position: fixed;
   left: 50%;
-  bottom: 28px;
+  bottom: 40px;
   transform: translateX(-50%);
   height: 48px;
   padding: 0 18px;
@@ -675,7 +675,8 @@ button {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   z-index: 30;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+ 
 }
 
 .show-map-btn:hover {
