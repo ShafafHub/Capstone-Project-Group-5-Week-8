@@ -521,7 +521,7 @@ button {
 
 
 .home-listings {
-  padding: 24px 48px 110px;
+  padding: 24px 48px 120px;
   background: #ffffff;
   position: relative;
 }
@@ -675,6 +675,7 @@ button {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   z-index: 30;
+  margin-bottom: 2rem;
 }
 
 .show-map-btn:hover {
@@ -724,5 +725,94 @@ button {
   .listing-card__meta,
   .listing-card__price {
     font-size: 14px;
+  }
+}
+
+
+.home-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 48px;
+  background: #ffffff;
+  border-top: 1px solid #ebebeb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  z-index: 25;
+}
+
+.home-footer__left,
+.home-footer__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #222222;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.home-footer__left a {
+  color: #222222;
+  text-decoration: none;
+}
+
+.home-footer__left a:hover {
+  text-decoration: underline;
+}
+
+.footer-dot {
+  color: #717171;
+}
+
+.home-footer__action {
+  border: none;
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 6px 4px;
+}
+
+.home-footer__action:hover {
+  text-decoration: underline;
+}
+
+.home-footer__icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.home-footer__chevron {
+  font-size: 12px;
+  line-height: 1;
+}
+
+@media (max-width: 1024px) {
+  .home-footer {
+    padding: 0 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-footer {
+    position: static;
+    min-height: auto;
+    padding: 16px 20px 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .home-footer__left,
+  .home-footer__right {
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }
