@@ -2,6 +2,7 @@ import HomeNavbar from "../components/home/HomeNavbar";
 import HomeSearchBar from "../components/home/HomeSearchBar";
 
 import HomeCategories from "../components/home/HomeCategories"
+import HomeListingsGrid from "../components/home/HomeListingsGrid";
 
 export default function HomePage() {
   return (
@@ -9,6 +10,7 @@ export default function HomePage() {
       <HomeNavbar />
       <HomeSearchBar/>
       <HomeCategories/>
+      <HomeListingsGrid/>
     </div>
   );
 }
