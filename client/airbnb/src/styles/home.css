@@ -20,7 +20,6 @@ button {
 
 .home-navbar {
   height: 80px;
-  border-bottom: 1px solid #ebebeb;
   display: flex;
   align-items: center;
   justify-content: space-between;
