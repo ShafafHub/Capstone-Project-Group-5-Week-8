@@ -1,11 +1,12 @@
 import "./../../styles/home.css";
+import airbnbLogo from "../../assets/icons/airbnb-logo.svg";
 
 export default function HomeNavbar() {
   return (
     <header className="home-navbar">
       <div className="home-navbar__left">
         <div className="airbnb-logo">
-          <span className="airbnb-logo__icon">⌂</span>
+          <img src={airbnbLogo} alt="logo" style={{width:"29.83px",height:"32px"}} />
           <span className="airbnb-logo__text">airbnb</span>
         </div>
       </div>
