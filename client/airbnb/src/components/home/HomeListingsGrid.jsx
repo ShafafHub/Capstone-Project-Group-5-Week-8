@@ -1,15 +1,27 @@
 import { useEffect, useState } from "react";
 import "./../../styles/home.css";
 
+import { useNavigate } from "react-router-dom";
+
 function ListingCard({ item }) {
+  const navigate = useNavigate();
+
   return (
-    <article className="listing-card">
+    <article
+      className="listing-card"
+      onClick={() => navigate(`/property/${item._id}`)}
+      style={{ cursor: "pointer" }}
+    >
       <div className="listing-card__image-wrap">
         {item.badge ? (
           <span className="listing-card__badge">{item.badge}</span>
         ) : null}
 
-        <button className="listing-card__heart" type="button">
+        <button
+          className="listing-card__heart"
+          type="button"
+          onClick={(e) => e.stopPropagation()} // ⛔ مهم
+        >
           {item.favorite ? "♥" : "♡"}
         </button>
 
