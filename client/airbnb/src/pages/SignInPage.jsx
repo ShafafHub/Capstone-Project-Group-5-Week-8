@@ -1,4 +1,5 @@
 import "./../styles/auth.css";
+import Input from "../components/common/Input";
 
 export default function SignInPage() {
   return (
