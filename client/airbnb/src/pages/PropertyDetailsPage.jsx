@@ -5,6 +5,7 @@ import PropertyGallery from "../components/property/PropertyGallery";
 import PropertySummary from "../components/property/PropertySummary";
 
 import PropertySleepSection from "../components/property/PropertySleepSection";
+import PropertyAmenities from "../components/property/PropertyAmenities";
 
 export default function PropertyDetailsPage() {
   return (
@@ -13,6 +14,7 @@ export default function PropertyDetailsPage() {
       <PropertyGallery />
       <PropertySummary />
       <PropertySleepSection />
+      <PropertyAmenities />
     </div>
   );
 }
