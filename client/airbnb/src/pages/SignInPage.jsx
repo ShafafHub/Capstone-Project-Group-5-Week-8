@@ -1,5 +1,4 @@
 import "./../styles/auth.css";
-import Input from "../components/common/Input";
 
 export default function SignInPage() {
   return (
@@ -12,7 +11,11 @@ export default function SignInPage() {
         </p>
 
         <form className="auth-form">
+<<<<<<< HEAD
           ‍{" "}
+=======
+          ‍
+>>>>>>> ceaca6a0904342bd81835f7a5d90e002be76370e
           <div className="auth-field">
             <label htmlFor="email">Email</label>
             <input id="email" type="email" placeholder="Enter Email Address" />
