@@ -1,0 +1,43 @@
+/* Container */
+.input-container {
+  width: 100%;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+.input-label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Input */
+.input-field {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Focus */
+.input-field:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Error حالت */
+.input-error {
+  border-color: red;
+}
+
+/* Error Text */
+.input-error-text {
+  margin-top: 4px;
+  font-size: 12px;
+  color: red;
+}
