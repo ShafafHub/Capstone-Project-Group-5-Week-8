@@ -13,12 +13,6 @@ export default function SignInPage() {
 
         <form className="auth-form">
           ‍{" "}
-          <Input
-            label="Password"
-            type="password"
-            placeholder="Enter password"
-            error="Password is too short"
-          />
           <div className="auth-field">
             <label htmlFor="email">Email</label>
             <input id="email" type="email" placeholder="Enter Email Address" />
