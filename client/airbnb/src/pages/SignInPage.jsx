@@ -12,27 +12,30 @@ export default function SignInPage() {
         </p>
 
         <form className="auth-form">
+          ‍{" "}
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Enter password"
+            error="Password is too short"
+          />
           <div className="auth-field">
             <label htmlFor="email">Email</label>
             <input id="email" type="email" placeholder="Enter Email Address" />
           </div>
-
           <div className="auth-field">
             <label htmlFor="password">Password</label>
             <input id="password" type="password" placeholder="Enter Password" />
           </div>
-
           <div className="auth-options">
             <label className="remember-me">
               <input type="checkbox" />
               <span>Keep me signed in</span>
             </label>
           </div>
-
           <button type="submit" className="auth-submit-btn">
             Sign In
           </button>
-
           <a href="#" className="auth-forgot-link">
             Forgot your password?
           </a>
