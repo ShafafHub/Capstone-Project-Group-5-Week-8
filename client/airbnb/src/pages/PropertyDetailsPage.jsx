@@ -8,6 +8,7 @@ import PropertySleepSection from "../components/property/PropertySleepSection";
 import PropertyAmenities from "../components/property/PropertyAmenities";
 import PropertyCalendarSection from "../components/property/PropertyCalendarSection";
 import PropertyReviews from "../components/property/PropertyReviews";
+import PropertyLocationSection from "../components/property/PropertyLocationSection";
 
 export default function PropertyDetailsPage() {
   return (
@@ -20,6 +21,7 @@ export default function PropertyDetailsPage() {
 
       <PropertyCalendarSection />
       <PropertyReviews/>
+      <PropertyLocationSection/>
     </div>
   );
 }
