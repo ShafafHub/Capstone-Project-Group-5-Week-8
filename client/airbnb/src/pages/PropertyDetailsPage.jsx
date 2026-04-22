@@ -9,6 +9,7 @@ import PropertyAmenities from "../components/property/PropertyAmenities";
 import PropertyCalendarSection from "../components/property/PropertyCalendarSection";
 import PropertyReviews from "../components/property/PropertyReviews";
 import PropertyLocationSection from "../components/property/PropertyLocationSection";
+import PropertyHostSection from "../components/property/PropertyHostSection";
 
 export default function PropertyDetailsPage() {
   return (
@@ -22,6 +23,7 @@ export default function PropertyDetailsPage() {
       <PropertyCalendarSection />
       <PropertyReviews/>
       <PropertyLocationSection/>
+      <PropertyHostSection/>
     </div>
   );
 }
