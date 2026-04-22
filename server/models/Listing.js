@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 const listingSchema = new mongoose.Schema(
   {
-    image: String,
+    images: {
+      type: [String],
+      default: [],
+    },
+
     location: String,
     distance: String,
     dates: String,

@@ -1,35 +1,57 @@
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./../../styles/property.css";
 
-const galleryImages = [
-  "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1000&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1448630360428-65456885c650?q=80&w=1000&auto=format&fit=crop",
-];
-
 export default function PropertyGallery() {
+  const { id } = useParams();
+  const [listing, setListing] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchListing = async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/listings/${id}`);
+        const data = await res.json();
+        setListing(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchListing();
+  }, [id]);
+
+  if (loading) return <p>Loading...</p>;
+  if (!listing) return <p>No listing found</p>;
+
   return (
     <section className="property-gallery-page">
+      {/* HEADER */}
       <div className="property-gallery-header">
-        <h1 className="property-gallery-title">
-          Earthen home hosted by Adam
-        </h1>
+        <h1 className="property-gallery-title">{listing.title}</h1>
 
         <div className="property-gallery-meta-row">
           <div className="property-gallery-meta-left">
-            <span className="property-meta-rating">★ 4.98</span>
+            <span className="property-meta-rating">★ {listing.rating}</span>
+
             <span className="property-meta-dot">·</span>
+
             <a href="/" className="property-meta-link">
-              61 reviews
+              {listing.reviews} reviews
             </a>
+
             <span className="property-meta-dot">·</span>
+
             <a href="/" className="property-meta-link">
               Superhost
             </a>
+
             <span className="property-meta-dot">·</span>
+
             <a href="/" className="property-meta-link">
-              Cortez, Colorado, United States
+              {listing.location}
             </a>
           </div>
 
@@ -47,23 +69,24 @@ export default function PropertyGallery() {
         </div>
       </div>
 
+      {/* GALLERY */}
       <div className="property-gallery-grid">
+        {/* MAIN IMAGE */}
         <div className="property-gallery-main">
-          <img src={galleryImages[0]} alt="Property main view" />
+          <img src={listing.images?.[0]} alt="Property main view" />
         </div>
 
+        {/* SIDE IMAGES */}
         <div className="property-gallery-side">
-          <div className="property-gallery-side-item">
-            <img src={galleryImages[1]} alt="Property view 1" />
-          </div>
-          <div className="property-gallery-side-item">
-            <img src={galleryImages[2]} alt="Property view 2" />
-          </div>
-          <div className="property-gallery-side-item">
-            <img src={galleryImages[3]} alt="Property view 3" />
-          </div>
+          {listing.images?.slice(1, 4).map((img, index) => (
+            <div key={index} className="property-gallery-side-item">
+              <img src={img} alt={`Property view ${index}`} />
+            </div>
+          ))}
+
           <div className="property-gallery-side-item property-gallery-side-item--last">
-            <img src={galleryImages[4]} alt="Property view 4" />
+            <img src={listing.images?.[4]} alt="Property view" />
+
             <button type="button" className="show-all-photos-btn">
               <span>⊞</span>
               <span>Show all photos</span>

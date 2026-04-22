@@ -26,7 +26,7 @@ function ListingCard({ item }) {
         </button>
 
         <img
-          src={item.image}
+          src={item.images?.[0]}
           alt={item.location}
           className="listing-card__image"
           loading="lazy"

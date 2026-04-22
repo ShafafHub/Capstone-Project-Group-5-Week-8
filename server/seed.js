@@ -16,6 +16,7 @@ const images = [
 
 const cities = [
   "Paris",
+
   "London",
   "New York",
   "Tokyo",
@@ -33,7 +34,14 @@ const cities = [
 ];
 
 const data = Array.from({ length: 130 }, (_, i) => ({
-  image: `https://picsum.photos/seed/${i}/800/600`,
+  images: [
+    `https://picsum.photos/seed/${i}/800/600`,
+    `https://picsum.photos/seed/${i + 1}/800/600`,
+    `https://picsum.photos/seed/${i + 2}/800/600`,
+    `https://picsum.photos/seed/${i + 3}/800/600`,
+    `https://picsum.photos/seed/${i + 4}/800/600`,
+  ],
+
   location: `City ${i + 1}`,
   distance: `${Math.floor(Math.random() * 9000)} km away`,
   dates: "Apr. 19 – 24",
