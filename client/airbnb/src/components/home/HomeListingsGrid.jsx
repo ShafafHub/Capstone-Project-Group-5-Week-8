@@ -59,7 +59,7 @@ function ListingCard({ item }) {
   );
 }
 
-export default function HomeListingsGrid() {
+export default function HomeListingsGrid({ search }) {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -76,6 +76,10 @@ export default function HomeListingsGrid() {
       });
   }, []);
 
+  const filteredListings = listings.filter((item) =>
+    item.location.toLowerCase().includes(search.toLowerCase())
+  );
+
   if (loading)
     return (
       <p style={{ textAlign: "center", marginTop: "200px", fontSize: "200px" }}>
@@ -86,7 +90,7 @@ export default function HomeListingsGrid() {
   return (
     <section className="home-listings">
       <div className="home-listings__grid">
-        {listings.map((item) => (
+        {filteredListings.map((item) => (
           <ListingCard key={item._id} item={item} />
         ))}
       </div>
