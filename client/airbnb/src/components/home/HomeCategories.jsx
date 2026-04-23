@@ -19,17 +19,16 @@ const categories = [
   { icon: "🌊", label: "Lake" },
 ];
 
-export default function HomeCategories() {
+export default function HomeCategories({ onSelectCategory }) {
   return (
     <section className="home-categories-bar">
       <div className="home-categories-scroll">
         {categories.map((item, index) => (
           <button
             key={item.label}
-            className={`home-category-item ${
-              index === 0 ? "home-category-item--active" : ""
-            }`}
+            className="home-category-item"
             type="button"
+            onClick={() => onSelectCategory(item.label)}
           >
             <span className="home-category-icon">{item.icon}</span>
             <span className="home-category-label">{item.label}</span>
@@ -38,7 +37,11 @@ export default function HomeCategories() {
       </div>
 
       <div className="home-categories-actions">
-        <button type="button" className="categories-arrow-btn" aria-label="Next">
+        <button
+          type="button"
+          className="categories-arrow-btn"
+          aria-label="Next"
+        >
           ›
         </button>
 
@@ -47,7 +50,11 @@ export default function HomeCategories() {
           <span>Filters</span>
         </button>
 
-        <button type="button" className="categories-toggle-btn" aria-label="Toggle">
+        <button
+          type="button"
+          className="categories-toggle-btn"
+          aria-label="Toggle"
+        >
           <span className="categories-toggle-circle" />
         </button>
       </div>

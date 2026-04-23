@@ -14,6 +14,7 @@ const listingSchema = new mongoose.Schema(
     rating: String,
     favorite: Boolean,
     badge: String,
+    category: String,
   },
   { timestamps: true }
 );
