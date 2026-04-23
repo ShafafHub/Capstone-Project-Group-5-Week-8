@@ -20,7 +20,7 @@ function ListingCard({ item }) {
         <button
           className="listing-card__heart"
           type="button"
-          onClick={(e) => e.stopPropagation()} // ⛔ مهم
+          onClick={(e) => e.stopPropagation()}
         >
           {item.favorite ? "♥" : "♡"}
         </button>
@@ -59,7 +59,7 @@ function ListingCard({ item }) {
   );
 }
 
-export default function HomeListingsGrid({ search }) {
+export default function HomeListingsGrid({ search, category }) {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -76,9 +76,15 @@ export default function HomeListingsGrid({ search }) {
       });
   }, []);
 
-  const filteredListings = listings.filter((item) =>
-    item.location.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredListings = listings.filter((item) => {
+    const matchSearch = item.location
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const matchCategory = category ? item.category === category : true;
+
+    return matchSearch && matchCategory;
+  });
 
   if (loading)
     return (

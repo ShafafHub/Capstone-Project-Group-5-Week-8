@@ -7,12 +7,13 @@ import HomeFooter from "../components/home/HomeFooter";
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
   return (
     <div className="home-page">
       <HomeNavbar />
       <HomeSearchBar onSearch={setSearch} />
-      <HomeCategories />
-      <HomeListingsGrid search={search} />
+      <HomeCategories onSelectCategory={setCategory} />
+      <HomeListingsGrid search={search} category={category} />
       <HomeFooter />
     </div>
   );

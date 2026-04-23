@@ -42,9 +42,29 @@ const cities = [
   "Prague",
 ];
 
+const categoriesList = [
+  "Caves",
+  "Cabins",
+  "Amazing views",
+  "Top cities",
+  "Luxe",
+  "Containers",
+  "Trending",
+  "New",
+  "Historical homes",
+  "Earth homes",
+  "Boats",
+  "Beachfront",
+  "OMG!",
+  "Tiny homes",
+  "National parks",
+  "Lake",
+];
+
 const data = Array.from({ length: 130 }, (_, i) => ({
   images: getImages(i),
 
+  category: categoriesList[i % categoriesList.length],
   location: cities[i % cities.length],
   distance: `${Math.floor(Math.random() * 9000)} km away`,
   dates: "Apr. 19 – 24",
