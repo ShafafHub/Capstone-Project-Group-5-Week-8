@@ -76,7 +76,12 @@ export default function HomeListingsGrid() {
       });
   }, []);
 
-  if (loading) return <p style={{textAlign:'center',marginTop:"200px",fontSize:"200px"}}>Loading...</p>;
+  if (loading)
+    return (
+      <p style={{ textAlign: "center", marginTop: "200px", fontSize: "200px" }}>
+        Loading...
+      </p>
+    );
 
   return (
     <section className="home-listings">

@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import Listing from "./models/Listing.js";
 
-const images = [
+// فقط عکس‌های خانه (پایدار)
+const houseImages = [
   "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
   "https://images.unsplash.com/photo-1494526585095-c41746248156",
   "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
@@ -14,9 +15,17 @@ const images = [
   "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
 ];
 
+// برای هر listing چند عکس متفاوت بگیر
+const getImages = (i) => [
+  houseImages[i % houseImages.length],
+  houseImages[(i + 1) % houseImages.length],
+  houseImages[(i + 2) % houseImages.length],
+  houseImages[(i + 3) % houseImages.length],
+  houseImages[(i + 4) % houseImages.length],
+];
+
 const cities = [
   "Paris",
-
   "London",
   "New York",
   "Tokyo",
@@ -34,15 +43,9 @@ const cities = [
 ];
 
 const data = Array.from({ length: 130 }, (_, i) => ({
-  images: [
-    `https://picsum.photos/seed/${i}/800/600`,
-    `https://picsum.photos/seed/${i + 1}/800/600`,
-    `https://picsum.photos/seed/${i + 2}/800/600`,
-    `https://picsum.photos/seed/${i + 3}/800/600`,
-    `https://picsum.photos/seed/${i + 4}/800/600`,
-  ],
+  images: getImages(i),
 
-  location: `City ${i + 1}`,
+  location: cities[i % cities.length],
   distance: `${Math.floor(Math.random() * 9000)} km away`,
   dates: "Apr. 19 – 24",
   price: `$${100 + Math.floor(Math.random() * 900)} CAD`,
