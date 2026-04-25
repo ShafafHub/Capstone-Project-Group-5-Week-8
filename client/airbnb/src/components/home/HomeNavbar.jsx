@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./../../styles/home.css";
 import airbnbLogo from "../../assets/icons/airbnb-logo.svg";
 
 export default function HomeNavbar() {
   const navigate = useNavigate();
-  const [authUser, setAuthUser] = useState(null);
 
-  useEffect(() => {
+  const [authUser, setAuthUser] = useState(() => {
     const savedUser = localStorage.getItem("authUser");
-
-    if (savedUser) {
-      setAuthUser(JSON.parse(savedUser));
-    }
-  }, []);
+    return savedUser ? JSON.parse(savedUser) : null;
+  });
 
   function handleLogout() {
     localStorage.removeItem("authUser");
