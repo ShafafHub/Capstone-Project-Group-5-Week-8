@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import listingRoutes from "../routes/listingRoutes.js";
+import authRoutes from "../routes/authRoutes.js";
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/listings", listingRoutes);
+app.use("/api/auth", authRoutes);
 
 // connect DB
 mongoose
