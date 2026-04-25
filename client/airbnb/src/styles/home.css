@@ -1075,3 +1075,31 @@ button {
     bottom: 18px;
   }
 }
+
+/*navbar-user-name*/
+.navbar-user-name {
+  font-size: 14px;
+  color: #222222;
+  font-weight: 500;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logout-btn {
+  border: 1px solid #dddddd;
+  background: #ffff;
+  color: #222222;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: #ff385c;
+  color:white;
+}

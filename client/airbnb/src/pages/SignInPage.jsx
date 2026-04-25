@@ -51,6 +51,8 @@ export default function SignInPage() {
         throw new Error(data.message || "Signin failed");
       }
 
+      localStorage.setItem("authUser", JSON.stringify(data.user));
+
       setSuccess("Signin successful");
 
       setFormData({
@@ -60,7 +62,7 @@ export default function SignInPage() {
 
       setTimeout(() => {
         navigate("/");
-      }, 1200);
+      }, 1000);
     } catch (err) {
       setError(err.message || "Something went wrong");
     } finally {
