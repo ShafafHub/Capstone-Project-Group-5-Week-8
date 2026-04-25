@@ -1,7 +1,79 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./../styles/auth.css";
 
 export default function SignUpPage() {
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  function handleChange(event) {
+    const { id, value } = event.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    setError("");
+    setSuccess("");
+
+    if (!formData.email || !formData.password) {
+      setError("Please fill all fields");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const payload = {
+        fullName: formData.email.split("@")[0] || "User",
+        email: formData.email,
+        password: formData.password,
+      };
+
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Signup failed");
+      }
+
+      setSuccess("Account created successfully");
+
+      setFormData({
+        email: "",
+        password: "",
+      });
+
+      setTimeout(() => {
+        navigate("/signin");
+      }, 1200);
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="auth-page">
       <div className="auth-card">
@@ -11,19 +83,34 @@ export default function SignUpPage() {
           Already have an account? <Link to="/signin">Sign In</Link>
         </p>
 
-        <form className="auth-form">
+        <form className="auth-form" onSubmit={handleSubmit}>
           <div className="auth-field">
             <label htmlFor="email">Email</label>
-            <input id="email" type="email" placeholder="Enter Email Address" />
+            <input
+              id="email"
+              type="email"
+              placeholder="Enter Email Address"
+              value={formData.email}
+              onChange={handleChange}
+            />
           </div>
 
           <div className="auth-field">
             <label htmlFor="password">Password</label>
-            <input id="password" type="password" placeholder="Enter Password" />
+            <input
+              id="password"
+              type="password"
+              placeholder="Enter Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
           </div>
 
-          <button type="submit" className="auth-submit-btn">
-            Create Account
+          {error ? <p className="auth-error">{error}</p> : null}
+          {success ? <p className="auth-success">{success}</p> : null}
+
+          <button type="submit" className="auth-submit-btn" disabled={loading}>
+            {loading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 
