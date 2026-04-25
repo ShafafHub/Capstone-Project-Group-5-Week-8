@@ -88,7 +88,7 @@ export default function HomeListingsGrid({ search, category }) {
 
   if (loading)
     return (
-      <p style={{ textAlign: "center", marginTop: "200px", fontSize: "200px" }}>
+      <p style={{ textAlign: "center", marginTop: "200px", fontSize: "100px" }}>
         Loading...
       </p>
     );
