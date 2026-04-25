@@ -1,11 +1,12 @@
 import express from "express";
+import bcrypt from "bcrypt";
 import User from "../models/User.js";
 
 const router = express.Router();
 
 router.post("/signup", async (req, res) => {
   try {
-    const { fullName, email, password } = req.body;
+    const { fullName, email, password } = req.body || {};
 
     if (!fullName || !email || !password) {
       return res.status(400).json({
@@ -21,10 +22,12 @@ router.post("/signup", async (req, res) => {
       });
     }
 
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = new User({
       fullName,
       email,
-      password,
+      password: hashedPassword,
     });
 
     await newUser.save();
@@ -63,7 +66,9 @@ router.post("/signin", async (req, res) => {
       });
     }
 
-    if (user.password !== password) {
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordMatch) {
       return res.status(401).json({
         message: "Invalid email or password",
       });
@@ -84,4 +89,5 @@ router.post("/signin", async (req, res) => {
     });
   }
 });
+
 export default router;
