@@ -222,3 +222,16 @@
   font-weight: 500;
 }
 /* sign up style*/
+
+/*error style*/
+.auth-error {
+  margin-top: 10px;
+  color: #d93025;
+  font-size: 14px;
+}
+
+.auth-success {
+  margin-top: 10px;
+  color: #188038;
+  font-size: 14px;
+}
