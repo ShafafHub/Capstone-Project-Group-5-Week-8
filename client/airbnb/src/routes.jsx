@@ -3,12 +3,33 @@ import HomePage from "./Pages/HomePage";
 import SignInPage from "./Pages/SignInPage";
 import SignUpPage from "./Pages/SignUpPage";
 import PropertyDetailsPage from "./Pages/PropertyDetailsPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const router = createBrowserRouter([
-  { path: "/", element: <HomePage /> },
-  { path: "/signin", element: <SignInPage /> },
-  { path: "/signup", element: <SignUpPage /> },
-  { path: "/property/:id", element: <PropertyDetailsPage /> },
+  {
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <HomePage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/property/:id",
+    element: (
+      <ProtectedRoute>
+        <PropertyDetailsPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/signin",
+    element: <SignInPage />,
+  },
+  {
+    path: "/signup",
+    element: <SignUpPage />,
+  },
 ]);
 
 export default router;
