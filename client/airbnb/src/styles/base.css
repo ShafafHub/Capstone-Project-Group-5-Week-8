@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button {
+  font: inherit;
+}
+
+/* layout */
+.home-page {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+/* navbar */
+.home-navbar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  background: var(--card);
+}
+
+.nav-tab {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+}
+
+.nav-tab:hover {
+  color: var(--text);
+}
+
+.nav-tab--active {
+  color: var(--text);
+}
+
+/* buttons */
+.airbnb-home-btn {
+  background: transparent;
+  color: var(--text);
+}
+
+.airbnb-home-btn:hover {
+  background: var(--soft);
+}
+
+.icon-btn:hover {
+  background: var(--soft);
+}
+
+/* profile */
+.profile-menu {
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+/* search */
+.home-search-bar {
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.search-section:hover {
+  background: var(--soft);
+}
+
+.search-label {
+  color: var(--text);
+}
+
+.search-value--muted {
+  color: var(--muted);
+}
+
+.search-divider {
+  background: var(--border);
+}
+
+/* categories */
+.home-categories-bar {
+  border-top: 1px solid var(--border);
+  background: var(--card);
+}
+
+.home-category-item {
+  color: var(--muted);
+}
+
+.home-category-item:hover {
+  color: var(--text);
+}
+
+.home-category-item--active {
+  color: var(--text);
+}
+
+/* buttons */
+.categories-arrow-btn,
+.categories-filter-btn,
+.categories-toggle-btn {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+}
+
+/* listings */
+.home-listings {
+  background: var(--bg);
+}
+
+.listing-card__title {
+  color: var(--text);
+}
+
+.listing-card__meta {
+  color: var(--muted);
+}
+
+.listing-card__price {
+  color: var(--text);
+}
+
+/* footer */
+.home-footer {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+}
+
+.home-footer__left,
+.home-footer__right {
+  color: var(--text);
+}

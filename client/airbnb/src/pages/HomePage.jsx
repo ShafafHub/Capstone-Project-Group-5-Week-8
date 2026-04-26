@@ -8,11 +8,16 @@ import HomeFooter from "../components/home/HomeFooter";
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
+  const [darkMode, setDarkMode] = useState(false);
   return (
-    <div className="home-page">
+    <div className={darkMode ? "app dark" : "app"}>
       <HomeNavbar />
       <HomeSearchBar onSearch={setSearch} />
-      <HomeCategories onSelectCategory={setCategory} />
+      <HomeCategories
+        onSelectCategory={setCategory}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
       <HomeListingsGrid search={search} category={category} />
       <HomeFooter />
     </div>
