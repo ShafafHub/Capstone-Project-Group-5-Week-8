@@ -468,24 +468,40 @@ button {
 }
 
 .categories-toggle-btn {
-  width: 56px;
-  height: 32px;
-  border: 1px solid #dddddd;
+  width: 70px;
+  height: 34px;
   border-radius: 999px;
-  background: #ffffff;
-  padding: 3px;
+  border: none;
+  cursor: pointer;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  cursor: pointer;
+  padding: 4px;
+  transition: all 0.3s ease;
+
+  background: var(--border);
 }
 
 .categories-toggle-circle {
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: #b0b0b0;
-  display: block;
+  background: var(--card);
+  position: absolute;
+  left: 4px;
+  transition: all 0.3s ease;
+}
+
+.app.dark .categories-toggle-circle {
+  transform: translateX(36px);
+}
+
+.toggle-icon {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  pointer-events: none;
 }
 
 @media (max-width: 1024px) {
@@ -517,7 +533,6 @@ button {
     display: none;
   }
 }
-
 
 .home-listings {
   padding: 24px 48px 120px;
@@ -675,7 +690,6 @@ button {
   cursor: pointer;
   z-index: 30;
   margin-bottom: 2rem;
- 
 }
 
 .show-map-btn:hover {
@@ -727,7 +741,6 @@ button {
     font-size: 14px;
   }
 }
-
 
 .home-footer {
   position: fixed;
@@ -850,7 +863,6 @@ button {
   min-height: 80px;
   padding-left: var(--home-padding-x);
   padding-right: var(--home-padding-x);
-
 }
 
 .home-navbar__center {
@@ -868,6 +880,7 @@ button {
 
 /* search bar polish */
 .home-search-wrapper {
+  background: var(--bg);
   padding-left: var(--home-padding-x);
   padding-right: var(--home-padding-x);
   padding-top: 18px;
@@ -898,7 +911,6 @@ button {
   padding-right: var(--home-padding-x);
   padding-top: 16px;
   padding-bottom: 12px;
-
 }
 
 .home-categories-scroll {

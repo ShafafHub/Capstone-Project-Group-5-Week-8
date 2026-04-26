@@ -1,4 +1,7 @@
 import "./../../styles/home.css";
+import "./../../styles/dark.css";
+import "./../../styles/light.css";
+import "./../../styles/base.css";
 
 const categories = [
   { icon: "⌂", label: "Caves" },
@@ -19,7 +22,11 @@ const categories = [
   { icon: "🌊", label: "Lake" },
 ];
 
-export default function HomeCategories({ onSelectCategory }) {
+export default function HomeCategories({
+  onSelectCategory,
+  darkMode,
+  setDarkMode,
+}) {
   return (
     <section className="home-categories-bar">
       <div className="home-categories-scroll">
@@ -53,8 +60,10 @@ export default function HomeCategories({ onSelectCategory }) {
         <button
           type="button"
           className="categories-toggle-btn"
-          aria-label="Toggle"
+          onClick={() => setDarkMode((prev) => !prev)}
         >
+          <span className="toggle-icon">{darkMode ? "🌙" : "☀️"}</span>
+
           <span className="categories-toggle-circle" />
         </button>
       </div>
