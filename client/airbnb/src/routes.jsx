@@ -4,6 +4,7 @@ import SignInPage from "./Pages/SignInPage";
 import SignUpPage from "./Pages/SignUpPage";
 import PropertyDetailsPage from "./Pages/PropertyDetailsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,11 +25,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/signin",
-    element: <SignInPage />,
+    element: (
+      <PublicRoute>
+        <SignInPage />
+      </PublicRoute>
+    ),
   },
   {
     path: "/signup",
-    element: <SignUpPage />,
+    element: (
+      <PublicRoute>
+        <SignUpPage />
+      </PublicRoute>
+    ),
   },
 ]);
 
