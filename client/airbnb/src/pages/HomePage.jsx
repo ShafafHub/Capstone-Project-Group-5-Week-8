@@ -9,15 +9,20 @@ export default function HomePage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [darkMode, setDarkMode] = useState(false);
+
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <HomeNavbar />
       <HomeSearchBar onSearch={setSearch} />
+
+      <div className="home-search-categories-gap" />
+
       <HomeCategories
         onSelectCategory={setCategory}
         darkMode={darkMode}
         setDarkMode={setDarkMode}
       />
+
       <HomeListingsGrid search={search} category={category} />
       <HomeFooter />
     </div>

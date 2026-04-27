@@ -370,10 +370,9 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: 18px;
-  padding: 16px 48px 12px;
+ padding: 48px 48px 12px;
   border-top: 1px solid #ebebeb;
   background: #ffffff;
-  margin-top: 2rem;
 }
 
 .home-categories-scroll {
@@ -532,6 +531,11 @@ button {
   .categories-toggle-btn {
     display: none;
   }
+}
+
+.home-search-categories-gap {
+  height: 32px;
+  background: var(--bg);
 }
 
 .home-listings {
