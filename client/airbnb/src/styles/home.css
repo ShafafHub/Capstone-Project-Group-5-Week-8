@@ -482,12 +482,12 @@ button {
 }
 
 .categories-toggle-circle {
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--card);
   position: absolute;
-  left: 4px;
+  left: 10px;
   transition: all 0.3s ease;
 }
 
