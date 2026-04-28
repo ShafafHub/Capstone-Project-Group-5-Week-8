@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 import Listing from "./models/Listing.js";
 
+dotenv.config();
 // فقط عکس‌های خانه (پایدار)
 const houseImages = [
   "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
@@ -63,7 +65,6 @@ const categoriesList = [
 
 const data = Array.from({ length: 130 }, (_, i) => ({
   images: getImages(i),
-
   category: categoriesList[i % categoriesList.length],
   location: cities[i % cities.length],
   distance: `${Math.floor(Math.random() * 9000)} km away`,
@@ -76,7 +77,7 @@ const data = Array.from({ length: 130 }, (_, i) => ({
 
 async function seed() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/airbnb");
+    await mongoose.connect(process.env.MONGO_URI);
 
     console.log("MongoDB connected");
 
