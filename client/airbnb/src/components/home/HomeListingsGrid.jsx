@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./../../styles/home.css";
-
 import { useNavigate } from "react-router-dom";
 
 function ListingCard({ item }) {
@@ -86,12 +85,28 @@ export default function HomeListingsGrid({ search, category }) {
     return matchSearch && matchCategory;
   });
 
-  if (loading)
+  if (loading) {
     return (
-      <p style={{ textAlign: "center", marginTop: "200px", fontSize: "100px" }}>
-        Loading...
-      </p>
+      <section className="home-listings">
+        <p className="home-listings__loading">Loading...</p>
+      </section>
     );
+  }
+
+  if (filteredListings.length === 0) {
+    return (
+      <section className="home-listings">
+        <div className="home-listings__empty">
+          <h2>No listings found</h2>
+          <p>Try changing your search or selecting another category.</p>
+        </div>
+
+        <button type="button" className="show-map-btn">
+          Show map
+        </button>
+      </section>
+    );
+  }
 
   return (
     <section className="home-listings">
