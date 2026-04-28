@@ -23,6 +23,10 @@ export default function SignInPage() {
     }));
   }
 
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -31,6 +35,11 @@ export default function SignInPage() {
 
     if (!formData.email || !formData.password) {
       setError("Please fill all fields");
+      return;
+    }
+
+    if (!isValidEmail(formData.email)) {
+      setError("Please enter a valid email address");
       return;
     }
 
@@ -52,7 +61,6 @@ export default function SignInPage() {
       }
 
       localStorage.setItem("authUser", JSON.stringify(data.user));
-
       setSuccess("Signin successful");
 
       setFormData({
@@ -114,22 +122,6 @@ export default function SignInPage() {
           By signing in, you agree to our <a href="#">Terms of Service</a> and{" "}
           <a href="#">Privacy Policy</a>.
         </p>
-
-        <div className="auth-divider">
-          <span>Or sign in using:</span>
-        </div>
-
-        <div className="social-buttons">
-          <button type="button" className="social-btn">
-            <span className="social-icon google">G</span>
-            <span>Continue with Google</span>
-          </button>
-
-          <button type="button" className="social-btn">
-            <span className="social-icon facebook">f</span>
-            <span>Continue with Facebook</span>
-          </button>
-        </div>
       </div>
     </div>
   );
