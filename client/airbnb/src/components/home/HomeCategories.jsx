@@ -62,7 +62,7 @@ export default function HomeCategories({
           className="categories-toggle-btn"
           onClick={() => setDarkMode((prev) => !prev)}
         >
-          <span className="toggle-icon">{darkMode ? "🌙" : "☀️"}</span>
+          <span className="toggle-icon">{darkMode ? "🌙" : "☀️"} </span>
 
           <span className="categories-toggle-circle" />
         </button>
