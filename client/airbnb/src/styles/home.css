@@ -677,6 +677,38 @@ button {
   font-weight: 600;
 }
 
+.home-listings__loading {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 24px;
+  color: var(--text);
+}
+
+.home-listings__empty {
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  padding: 32px 20px;
+}
+
+.home-listings__empty h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  color: var(--text);
+}
+
+.home-listings__empty p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+
 .show-map-btn {
   position: fixed;
   left: 50%;
