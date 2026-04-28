@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./../../styles/home.css";
 import airbnbLogo from "../../assets/icons/airbnb-logo.svg";
 
-export default function HomeNavbar() {
+export default function HomeNavbar({ onGoHome }) {
   const navigate = useNavigate();
 
   const [authUser, setAuthUser] = useState(() => {
@@ -17,17 +17,23 @@ export default function HomeNavbar() {
     navigate("/signin");
   }
 
+  function handleLogoClick() {
+    if (onGoHome) {
+      onGoHome();
+    }
+  }
+
   return (
     <header className="home-navbar">
       <div className="home-navbar__left">
-        <div className="airbnb-logo">
+        <Link to="/" className="airbnb-logo" onClick={handleLogoClick}>
           <img
             src={airbnbLogo}
             alt="logo"
             style={{ width: "29.83px", height: "32px" }}
           />
           <span className="airbnb-logo__text">airbnb</span>
-        </div>
+        </Link>
       </div>
 
       <nav className="home-navbar__center">
@@ -49,11 +55,7 @@ export default function HomeNavbar() {
               {authUser.fullName || authUser.email}
             </span>
 
-            <button
-              className="logout-btn"
-              type="button"
-              onClick={handleLogout}
-            >
+            <button className="logout-btn" type="button" onClick={handleLogout}>
               Logout
             </button>
 

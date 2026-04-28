@@ -766,13 +766,13 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #222222;
+ color: var(--text);
   font-size: 14px;
   line-height: 1.2;
 }
 
 .home-footer__left a {
-  color: #222222;
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -790,7 +790,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #222222;
+color: var(--text);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -1095,7 +1095,7 @@ button {
 /*navbar-user-name*/
 .navbar-user-name {
   font-size: 14px;
-  color: #222222;
+  color: var(--text);
   font-weight: 500;
   max-width: 120px;
   white-space: nowrap;

@@ -1,6 +1,7 @@
 import "./../../styles/property.css";
 
 import airbnbLogo from "../../assets/icons/airbnb-logo.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function PropertyNavbar() {
   return (
@@ -8,8 +9,14 @@ export default function PropertyNavbar() {
       <div className="property-navbar__left">
         <div className="property-navbar__logo">
           
-          <img src={airbnbLogo} alt="logo" style={{width:"29.83px",height:"32px"}} />
-          <span className="property-navbar__logo-text">airbnb</span>
+         <Link to="/" className="airbnb-logo">
+            <img
+              src={airbnbLogo}
+              alt="logo"
+              style={{ width: "29.83px", height: "32px" }}
+            />
+            <span className="airbnb-logo__text">airbnb</span>
+          </Link>
         </div>
       </div>
 
