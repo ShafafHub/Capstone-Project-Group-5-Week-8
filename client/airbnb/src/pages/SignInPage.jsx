@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./../styles/auth.css";
+import { setAuthUser } from "../utils/auth";
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ export default function SignInPage() {
         throw new Error(data.message || "Signin failed");
       }
 
-      localStorage.setItem("authUser", JSON.stringify(data.user));
+      setAuthUser(data.user);
       setSuccess("Signin successful");
 
       setFormData({
