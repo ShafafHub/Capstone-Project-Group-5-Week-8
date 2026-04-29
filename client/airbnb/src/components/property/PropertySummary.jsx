@@ -1,14 +1,17 @@
 import "./../../styles/property.css";
 
-export default function PropertySummary() {
+export default function PropertySummary({ listing }) {
+  if (!listing) return null;
+
+  const priceText = listing.price || "$750 CAD";
+  const stayTitle = `${listing.category || "Stay"} in ${listing.location || "Unknown location"}`;
+
   return (
     <section className="property-summary">
       <div className="property-summary__left">
         <div className="property-summary__header">
           <div>
-            <h2 className="property-summary__title">
-              Treehouse in Port Angeles, Washington, United States
-            </h2>
+            <h2 className="property-summary__title">{stayTitle}</h2>
             <p className="property-summary__meta">
               6 guests · 2 bedrooms · 3 beds · 1 bath
             </p>
@@ -61,15 +64,13 @@ export default function PropertySummary() {
 
         <div className="property-description">
           <p>
-            Soar to new heights in this awe-inspiring treehouse retreat. Relax in
-            the treetops, soak in the hand-crafted interior, and unwind in a space
-            that feels both luxurious and deeply connected to nature.
+            Enjoy a memorable stay in {listing.location}. This place offers a calm
+            atmosphere, beautiful surroundings, and a comfortable experience for guests.
           </p>
 
           <p>
-            Every detail in this stay was designed to create a one-of-a-kind
-            experience. From the warm wood textures to the panoramic views, this
-            property offers a memorable escape for couples, families, or friends.
+            Every detail is designed to make the stay relaxing and enjoyable, whether
+            you are traveling as a couple, family, or group of friends.
           </p>
 
           <button type="button" className="property-show-more">
@@ -82,7 +83,7 @@ export default function PropertySummary() {
         <div className="booking-card">
           <div className="booking-card__price-row">
             <div>
-              <span className="booking-card__price">$750 CAD</span>
+              <span className="booking-card__price">{priceText}</span>
               <span className="booking-card__night"> night</span>
             </div>
           </div>
@@ -114,8 +115,8 @@ export default function PropertySummary() {
 
           <div className="booking-card__breakdown">
             <div className="booking-card__line">
-              <span>$750 CAD x 5 nights</span>
-              <span>$3,750 CAD</span>
+              <span>{priceText} x 5 nights</span>
+              <span>{priceText}</span>
             </div>
             <div className="booking-card__line">
               <span>Cleaning fee</span>
@@ -138,9 +139,7 @@ export default function PropertySummary() {
 
           <div className="booking-card__rare-find">
             <div className="booking-card__rare-icon">💎</div>
-            <p>
-              This is a rare find. Beverly’s place is usually fully booked.
-            </p>
+            <p>This is a rare find. This place is usually fully booked.</p>
           </div>
         </div>
 

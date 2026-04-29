@@ -1,45 +1,28 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import "./../../styles/property.css";
 
-export default function PropertyGallery() {
-  const { id } = useParams();
-  const [listing, setListing] = useState(null);
-  const [loading, setLoading] = useState(true);
+export default function PropertyGallery({ listing }) {
+  if (!listing) return null;
 
-  useEffect(() => {
-    const fetchListing = async () => {
-      try {
-        const res = await fetch(`http://localhost:5000/api/listings/${id}`);
-        const data = await res.json();
-        setListing(data);
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchListing();
-  }, [id]);
-
-  if (loading) return <p>Loading...</p>;
-  if (!listing) return <p>No listing found</p>;
+  const images = listing.images || [];
+  const mainImage = images[0];
+  const sideImages = images.slice(1, 4);
+  const lastImage = images[4] || images[0];
 
   return (
     <section className="property-gallery-page">
-      {/* HEADER */}
       <div className="property-gallery-header">
-        <h1 className="property-gallery-title">{listing.title}</h1>
+        <h1 className="property-gallery-title">
+          {listing.location || "Property details"}
+        </h1>
 
         <div className="property-gallery-meta-row">
           <div className="property-gallery-meta-left">
-            <span className="property-meta-rating">★ {listing.rating}</span>
+            <span className="property-meta-rating">★ {listing.rating || "4.9"}</span>
 
             <span className="property-meta-dot">·</span>
 
             <a href="/" className="property-meta-link">
-              {listing.reviews} reviews
+              366 reviews
             </a>
 
             <span className="property-meta-dot">·</span>
@@ -69,23 +52,20 @@ export default function PropertyGallery() {
         </div>
       </div>
 
-      {/* GALLERY */}
       <div className="property-gallery-grid">
-        {/* MAIN IMAGE */}
         <div className="property-gallery-main">
-          <img src={listing.images?.[0]} alt="Property main view" />
+          <img src={mainImage} alt={`${listing.location} main view`} />
         </div>
 
-        {/* SIDE IMAGES */}
         <div className="property-gallery-side">
-          {listing.images?.slice(1, 4).map((img, index) => (
+          {sideImages.map((img, index) => (
             <div key={index} className="property-gallery-side-item">
-              <img src={img} alt={`Property view ${index}`} />
+              <img src={img} alt={`${listing.location} view ${index + 2}`} />
             </div>
           ))}
 
           <div className="property-gallery-side-item property-gallery-side-item--last">
-            <img src={listing.images?.[4]} alt="Property view" />
+            <img src={lastImage} alt={`${listing.location} extra view`} />
 
             <button type="button" className="show-all-photos-btn">
               <span>⊞</span>
