@@ -1,12 +1,12 @@
 import "./../../styles/property.css";
 
-export default function PropertyLocationSection() {
+export default function PropertyLocationSection({ listing }) {
   return (
     <section className="property-location-section">
       <div className="property-location-section__header">
         <h2 className="property-location-section__title">Where you'll be</h2>
         <p className="property-location-section__subtitle">
-          Port Angeles, Washington, United States
+          {listing?.location || "Port Angeles, Washington, United States"}
         </p>
       </div>
 
@@ -72,13 +72,12 @@ export default function PropertyLocationSection() {
 
         <p className="property-location-highlights__text">
           We are at the edge of a development down a dead-end road. There is a
-          house at the front of the property 250 feet away, from the treehouse you
-          cannot see it.
+          house at the front of the property 250 feet away.
         </p>
 
         <p className="property-location-highlights__text">
-          Sea to mountain views spread over the grounds and the surrounding
-          landscape, giving the entire stay a peaceful and private atmosphere.
+          Beautiful surroundings and peaceful views make this stay feel calm,
+          private, and memorable.
         </p>
 
         <button type="button" className="property-location-show-more">

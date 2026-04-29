@@ -1,15 +1,13 @@
 import "./../../styles/property.css";
-
 import airbnbLogo from "../../assets/icons/airbnb-logo.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function PropertyNavbar() {
   return (
     <header className="property-navbar">
       <div className="property-navbar__left">
         <div className="property-navbar__logo">
-          
-         <Link to="/" className="airbnb-logo">
+          <Link to="/" className="airbnb-logo">
             <img
               src={airbnbLogo}
               alt="logo"
@@ -36,15 +34,27 @@ export default function PropertyNavbar() {
           Airbnb your home
         </button>
 
-        <button type="button" className="property-navbar__icon-btn" aria-label="Language">
+        <button
+          type="button"
+          className="property-navbar__icon-btn"
+          aria-label="Language"
+        >
           🌐
         </button>
 
         <div className="property-navbar__profile">
-          <button type="button" className="property-navbar__menu-btn" aria-label="Menu">
+          <button
+            type="button"
+            className="property-navbar__menu-btn"
+            aria-label="Menu"
+          >
             ☰
           </button>
-          <button type="button" className="property-navbar__avatar-btn" aria-label="Profile">
+          <button
+            type="button"
+            className="property-navbar__avatar-btn"
+            aria-label="Profile"
+          >
             A
           </button>
         </div>
