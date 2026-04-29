@@ -1,10 +1,23 @@
+import { useState } from "react";
 import "./../../styles/property.css";
 
 export default function PropertySummary({ listing }) {
+  const [demoMessage, setDemoMessage] = useState("");
+
   if (!listing) return null;
 
   const priceText = listing.price || "$750 CAD";
   const stayTitle = `${listing.category || "Stay"} in ${listing.location || "Unknown location"}`;
+
+  function handleReserveClick() {
+    setDemoMessage(
+      "Reservation submitted successfully. This is a demo booking flow. No real payment or booking was processed."
+    );
+
+    setTimeout(() => {
+      setDemoMessage("");
+    }, 4000);
+  }
 
   return (
     <section className="property-summary">
@@ -106,9 +119,17 @@ export default function PropertySummary({ listing }) {
               <span className="booking-card__chevron">⌄</span>
             </div>
 
-            <button type="button" className="booking-card__reserve-btn">
+            <button
+              type="button"
+              className="booking-card__reserve-btn"
+              onClick={handleReserveClick}
+            >
               Reserve
             </button>
+
+            {demoMessage ? (
+              <p className="booking-card__demo-message">{demoMessage}</p>
+            ) : null}
           </div>
 
           <p className="booking-card__notice">You won’t be charged yet</p>
