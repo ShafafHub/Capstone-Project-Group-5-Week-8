@@ -1,10 +1,8 @@
 import { Navigate } from "react-router-dom";
+import { isAuthenticated } from "../utils/auth";
 
 export default function PublicRoute({ children }) {
-  const savedUser = localStorage.getItem("authUser");
-  const authUser = savedUser ? JSON.parse(savedUser) : null;
-
-  if (authUser) {
+  if (isAuthenticated()) {
     return <Navigate to="/" replace />;
   }
 
