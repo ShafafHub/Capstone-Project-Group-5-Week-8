@@ -2314,3 +2314,15 @@
 .property-things-section {
   box-sizing: border-box;
 }
+
+/*Booking-card-demo-message*/
+.booking-card__demo-message {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(24, 128, 56, 0.08);
+  border: 1px solid rgba(24, 128, 56, 0.18);
+  color: #188038;
+  font-size: 14px;
+  line-height: 1.5;
+}
