@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeNavbar from "../components/home/HomeNavbar";
 import HomeSearchBar from "../components/home/HomeSearchBar";
 import HomeCategories from "../components/home/HomeCategories";
@@ -8,7 +8,13 @@ import HomeFooter from "../components/home/HomeFooter";
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
+  }, [darkMode]);
 
   function handleGoHome() {
     setSearch("");
