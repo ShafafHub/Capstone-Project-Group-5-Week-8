@@ -5,6 +5,7 @@ import SignUpPage from "./Pages/SignUpPage";
 import PropertyDetailsPage from "./Pages/PropertyDetailsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import PropertyPhotosPage from "./Pages/PropertyPhotosPage";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,14 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute>
         <PropertyDetailsPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/property/:id/photos",
+    element: (
+      <ProtectedRoute>
+        <PropertyPhotosPage />
       </ProtectedRoute>
     ),
   },
