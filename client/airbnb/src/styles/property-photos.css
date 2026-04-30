@@ -1,0 +1,137 @@
+.property-photos-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.property-photos-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 48px 120px;
+  background: var(--bg);
+}
+
+.property-photos-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.property-photos-title {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.property-photos-subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.property-photos-back-btn {
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.property-photos-back-btn:hover {
+  background: var(--soft);
+}
+
+.property-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.property-photos-item {
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--card);
+}
+
+.property-photos-image {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+}
+
+.property-photos-state {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 120px;
+  background: var(--bg);
+}
+
+.property-photos-state__card {
+  width: 100%;
+  max-width: 520px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.property-photos-state__card h2 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 24px;
+}
+
+.property-photos-state__card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .property-photos-content {
+    padding: 24px 24px 110px;
+  }
+
+  .property-photos-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .property-photos-content {
+    padding: 20px 20px 100px;
+  }
+
+  .property-photos-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .property-photos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .property-photos-title {
+    font-size: 24px;
+  }
+
+  .property-photos-image {
+    height: 240px;
+  }
+
+  .property-photos-back-btn {
+    width: 100%;
+  }
+}

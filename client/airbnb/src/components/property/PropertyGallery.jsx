@@ -1,12 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import "./../../styles/property.css";
 
 export default function PropertyGallery({ listing }) {
+  const navigate = useNavigate();
+
   if (!listing) return null;
 
   const images = listing.images || [];
   const mainImage = images[0];
   const sideImages = images.slice(1, 4);
   const lastImage = images[4] || images[0];
+
+  function handleShowAllPhotos() {
+    navigate(`/property/${listing._id}/photos`);
+  }
 
   return (
     <section className="property-gallery-page">
@@ -17,7 +24,9 @@ export default function PropertyGallery({ listing }) {
 
         <div className="property-gallery-meta-row">
           <div className="property-gallery-meta-left">
-            <span className="property-meta-rating">★ {listing.rating || "4.9"}</span>
+            <span className="property-meta-rating">
+              ★ {listing.rating || "4.9"}
+            </span>
 
             <span className="property-meta-dot">·</span>
 
@@ -67,7 +76,11 @@ export default function PropertyGallery({ listing }) {
           <div className="property-gallery-side-item property-gallery-side-item--last">
             <img src={lastImage} alt={`${listing.location} extra view`} />
 
-            <button type="button" className="show-all-photos-btn">
+            <button
+              type="button"
+              className="show-all-photos-btn"
+              onClick={handleShowAllPhotos}
+            >
               <span>⊞</span>
               <span>Show all photos</span>
             </button>
