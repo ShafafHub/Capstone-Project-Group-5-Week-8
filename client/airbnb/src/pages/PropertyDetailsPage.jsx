@@ -18,6 +18,10 @@ import "../styles/property-details.css";
 export default function PropertyDetailsPage() {
   const { id } = useParams();
 
+  const [darkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -48,62 +52,70 @@ export default function PropertyDetailsPage() {
 
   if (loading) {
     return (
-      <div className="property-details-page">
-        <PropertyNavbar listing={listing} />
-        <main className="property-state-wrapper">
-          <div className="property-state-card">
-            <h2>Loading property...</h2>
-            <p>Please wait while we load the property details.</p>
-          </div>
-        </main>
-        <PropertyFooter />
+      <div className={darkMode ? "app dark" : "app"}>
+        <div className="property-details-page">
+          <PropertyNavbar listing={listing} />
+          <main className="property-state-wrapper">
+            <div className="property-state-card">
+              <h2>Loading property...</h2>
+              <p>Please wait while we load the property details.</p>
+            </div>
+          </main>
+          <PropertyFooter />
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="property-details-page">
-        <PropertyNavbar listing={listing} />
-        <main className="property-state-wrapper">
-          <div className="property-state-card">
-            <h2>Unable to load property</h2>
-            <p>{error}</p>
-          </div>
-        </main>
-        <PropertyFooter />
+      <div className={darkMode ? "app dark" : "app"}>
+        <div className="property-details-page">
+          <PropertyNavbar listing={listing} />
+          <main className="property-state-wrapper">
+            <div className="property-state-card">
+              <h2>Unable to load property</h2>
+              <p>{error}</p>
+            </div>
+          </main>
+          <PropertyFooter />
+        </div>
       </div>
     );
   }
 
   if (!listing) {
     return (
-      <div className="property-details-page">
-        <PropertyNavbar listing={listing} />
-        <main className="property-state-wrapper">
-          <div className="property-state-card">
-            <h2>Property not found</h2>
-            <p>The property you are looking for does not exist.</p>
-          </div>
-        </main>
-        <PropertyFooter />
+      <div className={darkMode ? "app dark" : "app"}>
+        <div className="property-details-page">
+          <PropertyNavbar listing={listing} />
+          <main className="property-state-wrapper">
+            <div className="property-state-card">
+              <h2>Property not found</h2>
+              <p>The property you are looking for does not exist.</p>
+            </div>
+          </main>
+          <PropertyFooter />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="property-details-page">
-      <PropertyNavbar listing={listing} />
-      <PropertyGallery listing={listing} />
-      <PropertySummary listing={listing} />
-      <PropertySleepSection listing={listing} />
-      <PropertyAmenities listing={listing} />
-      <PropertyCalendarSection listing={listing} />
-      <PropertyReviews listing={listing} />
-      <PropertyLocationSection listing={listing} />
-      <PropertyHostSection listing={listing} />
-      <PropertyThingsToKnow listing={listing} />
-      <PropertyFooter />
+    <div className={darkMode ? "app dark" : "app"}>
+      <div className="property-details-page">
+        <PropertyNavbar listing={listing} />
+        <PropertyGallery listing={listing} />
+        <PropertySummary listing={listing} />
+        <PropertySleepSection listing={listing} />
+        <PropertyAmenities listing={listing} />
+        <PropertyCalendarSection listing={listing} />
+        <PropertyReviews listing={listing} />
+        <PropertyLocationSection listing={listing} />
+        <PropertyHostSection listing={listing} />
+        <PropertyThingsToKnow listing={listing} />
+        <PropertyFooter />
+      </div>
     </div>
   );
 }

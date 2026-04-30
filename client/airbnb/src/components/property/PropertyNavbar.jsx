@@ -1,8 +1,20 @@
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./../../styles/property.css";
 import airbnbLogo from "../../assets/icons/airbnb-logo.svg";
-import { Link } from "react-router-dom";
+import { getAuthUser, clearAuthUser } from "../../utils/auth";
 
 export default function PropertyNavbar() {
+  const navigate = useNavigate();
+
+  const [authUser, setAuthUser] = useState(() => getAuthUser());
+
+  function handleLogout() {
+    clearAuthUser();
+    setAuthUser(null);
+    navigate("/signin");
+  }
+
   return (
     <header className="property-navbar">
       <div className="property-navbar__left">
@@ -42,22 +54,50 @@ export default function PropertyNavbar() {
           🌐
         </button>
 
-        <div className="property-navbar__profile">
-          <button
-            type="button"
-            className="property-navbar__menu-btn"
-            aria-label="Menu"
-          >
-            ☰
-          </button>
-          <button
-            type="button"
-            className="property-navbar__avatar-btn"
-            aria-label="Profile"
-          >
-            A
-          </button>
-        </div>
+        {authUser ? (
+          <div className="property-navbar__profile">
+            <span className="property-navbar-user-name">
+              {authUser.fullName || authUser.email}
+            </span>
+
+            <button
+              className="property-navbar__logout-btn"
+              type="button"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+
+            <button
+              type="button"
+              className="property-navbar__avatar-btn"
+              aria-label="Profile"
+            >
+              {(authUser.fullName || authUser.email || "A")
+                .charAt(0)
+                .toUpperCase()}
+            </button>
+          </div>
+        ) : (
+          <div className="property-navbar__profile">
+            <button
+              type="button"
+              className="property-navbar__menu-btn"
+              aria-label="Menu"
+            >
+              ☰
+            </button>
+
+            <button
+              type="button"
+              className="property-navbar__avatar-btn"
+              aria-label="Profile"
+              onClick={() => navigate("/signin")}
+            >
+              A
+            </button>
+          </div>
+        )}
       </div>
     </header>
   );
